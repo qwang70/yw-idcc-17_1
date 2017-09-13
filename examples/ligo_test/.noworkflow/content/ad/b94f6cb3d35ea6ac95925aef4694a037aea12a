@@ -1,0 +1,8 @@
+def filter_data(data_in,coefs):
+    data = data_in.copy()
+    for coef in coefs:
+        b,a = coef
+        # filtfilt applies a linear filter twice, once forward and once backwards.
+        # The combined filter has linear phase.
+        data = filtfilt(b, a, data)
+    return data

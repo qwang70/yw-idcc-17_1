@@ -1,0 +1,55 @@
+
+digraph yw_data_view {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label="GRAVITATIONAL_WAVE_DETECTION"
+subgraph cluster_workflow { label=""; color=black; penwidth=2
+subgraph cluster_workflow_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#66883F" peripheries=1 fontname="Courier-Bold" fontcolor=white]
+WHITENING
+AMPLITUDE_SPECTRAL_DENSITY
+LOAD_DATA
+BANDPASSING
+node[shape=box style="filled" fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+node[shape=box style="rounded,filled" fillcolor="#FFE4B5" peripheries=1 fontname="Courier-Bold" fontsize=9]
+FN_Detector[shape=record rankdir=LR label="{<f0> [data6] FN_Detector |<f1> [var48] fn_L1 = L-L1_LOSC_4_V1-1126259446-32.hdf5}"]
+strain_L1_whitenbp[shape=record rankdir=LR label="{<f0> [data19] strain_L1_whitenbp |<f1> [var437] strain_L1_whitenbp = array([  8.18464884,  19.93543185,  29.97449146, ..., -46.9446879 ,
+       -25.18198039,  -0.68432653])}"]
+strain_L1_whiten[shape=record rankdir=LR label="{<f0> [data17] strain_L1_whiten |<f1> [var392] strain_L1_whiten = array([  8.49413154,  -1.67201614,  27.88833187, ..., -11.56232362,
+        65.39942945,  72.15659253])}"]
+PSD_L1[shape=record rankdir=LR label="{<f0> [data14] PSD_L1 |<f1> [var325] psd_L1 = <scipy.interpolate.interpolate.interp1d object at 0x10583cd08>}"]
+node[shape=box style="rounded,filled" fillcolor="#222222" peripheries=1 fontname="Helvetica-Bold"]
+fs[shape=record rankdir=LR label="{<f0> [data12] fs |<f1> [var69] fs = 4096}"]
+}}
+subgraph cluster_inflows { label=""; color=white; penwidth=2
+subgraph cluster_inflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+fs_inflow [label=""]
+FN_Detector_inflow [label=""]
+FN_Sampling_rate_inflow [label=""]
+}}
+subgraph cluster_outflows { label=""; color=white; penwidth=2
+subgraph cluster_outflows_inner { label=""; color=white
+node[shape=circle fillcolor="#FFFFFF" peripheries=1 width=0.2]
+}}
+PSD_H1 -> WHITENING
+strain_H1_whiten -> BANDPASSING
+fs -> AMPLITUDE_SPECTRAL_DENSITY
+PSD_L1 -> WHITENING
+strain_L1_whiten -> BANDPASSING
+FN_Detector -> LOAD_DATA
+strain_H1 -> AMPLITUDE_SPECTRAL_DENSITY
+FN_Sampling_rate -> LOAD_DATA
+strain_L1 -> AMPLITUDE_SPECTRAL_DENSITY
+LOAD_DATA -> strain_H1
+LOAD_DATA -> strain_L1
+AMPLITUDE_SPECTRAL_DENSITY -> PSD_H1
+AMPLITUDE_SPECTRAL_DENSITY -> PSD_L1
+WHITENING -> strain_H1_whiten
+WHITENING -> strain_L1_whiten
+BANDPASSING -> strain_L1_whitenbp
+fs_inflow -> fs
+FN_Detector_inflow -> FN_Detector
+FN_Sampling_rate_inflow -> FN_Sampling_rate
+}
+

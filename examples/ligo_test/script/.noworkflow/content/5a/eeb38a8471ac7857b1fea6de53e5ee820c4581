@@ -1,0 +1,11 @@
+def reqshift(data,fshift=100,sample_rate=4096):
+    """Frequency shift the signal by constant
+    """
+    x = np.fft.rfft(data)
+    T = len(data)/float(sample_rate)
+    df = 1.0/T
+    nbins = int(fshift/df)
+    # print T,df,nbins,x.real.shape
+    y = np.roll(x.real,nbins) + 1j*np.roll(x.imag,nbins)
+    z = np.fft.irfft(y)
+    return z

@@ -1,0 +1,47 @@
+  time_H1: len, min, mean, max =  131072 1126259446.0 1126259462.0 1126259478.0
+strain_H1: len, min, mean, max =  131072 -7.11996338709e-19 8.73279794057e-23 7.71483633765e-19
+strain_L1: len, min, mean, max =  131072 -2.6788089173e-18 -1.82870749189e-18 -7.69266177024e-19
+H1     DATA: len, min, mean, max =  32 1 1.0 1
+H1 CBC_CAT1: len, min, mean, max =  32 1 1.0 1
+H1 CBC_CAT2: len, min, mean, max =  32 1 1.0 1
+L1     DATA: len, min, mean, max =  32 1 1.0 1
+L1 CBC_CAT1: len, min, mean, max =  32 1 1.0 1
+L1 CBC_CAT2: len, min, mean, max =  32 1 1.0 1
+In both H1 and L1, all 32 seconds of data are present (DATA=1), 
+and all pass data quality (CBC_CAT1=1 and CBC_CAT2=1).
+Contents of all the key, value pairs in chan_dict
+NO_BURST_HW_INJ
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+NO_CBC_HW_INJ
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+CBC_CAT1
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+BURST_CAT2
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+BURST_CAT1
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+CBC_CAT2
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+DEFAULT
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+CBC_CAT3
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+NO_CW_HW_INJ
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+NO_STOCH_HW_INJ
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+NO_DETCHAR_HW_INJ
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+BURST_CAT3
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+DATA
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
+We see that all keys have 32 seconds of '1', meaning the data pass all data quality flags
+and have no HW injections, except there are CW injections in L1.
+ 
+Total number of non-NaNs in these data =  131072
+GPS start, GPS stop and length of  all data in this file =  1126259446.0 1126259478.0 131072
+Number of segments with DQflag CBC_CAT3  =  1
+GPS start, GPS stop and length of segment 0 in this file =  1126259446.0 1126259478.0 131072
+Number of segments with DQflag NO_CBC_HW_INJ  =  1
+GPS start, GPS stop and length of segment 0 in this file =  1126259446.0 1126259478.0 131072

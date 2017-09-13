@@ -1,0 +1,37 @@
+def get_filter_coefs(fs):
+    
+    # assemble the filter b,a coefficients:
+    coefs = []
+
+    # bandpass filter parameters
+    lowcut=43
+    highcut=260
+    order = 4
+
+    # bandpass filter coefficients 
+    nyq = 0.5*fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    bb, ab = butter(order, [low, high], btype='band')
+    coefs.append((bb,ab))
+
+    # Frequencies of notches at known instrumental spectral line frequencies.
+    # You can see these lines in the ASD above, so it is straightforward to make this list.
+    notchesAbsolute = np.array(
+        [14.0,34.70, 35.30, 35.90, 36.70, 37.30, 40.95, 60.00, 
+         120.00, 179.99, 304.99, 331.49, 510.02, 1009.99])
+
+    # notch filter coefficients:
+    for notchf in notchesAbsolute:                      
+        bn, an = iir_bandstops(np.array([[notchf,1,0.1]]), fs, order=4)
+        coefs.append((bn,an))
+
+    # Manually do a wider notch filter around 510 Hz etc.          
+    bn, an = iir_bandstops(np.array([[510,200,20]]), fs, order=4)
+    coefs.append((bn, an))
+
+    # also notch out the forest of lines around 331.5 Hz
+    bn, an = iir_bandstops(np.array([[331.5,10,1]]), fs, order=4)
+    coefs.append((bn, an))
+    
+    return coefs
